@@ -23,7 +23,7 @@ Este proyecto consiste en un dispositivo portátil desarrollado con la placa **E
 
 ---
 
-## 🧩 Componentes de Hardware Utilizados
+## Componentes de Hardware Utilizados
 
 <p align="center">
 <img src="(tu_imagen_aqui).jpg" height="500" width="500">
