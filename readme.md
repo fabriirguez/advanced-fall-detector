@@ -81,7 +81,9 @@ Todos los componentes trabajan conjuntamente para proporcionar un sistema comple
 ## Mejoras Implementadas en esta Versión (PROXIMAMENTE)
 
 Además de las funciones básicas de detección de caídas y alerta sonora, esta versión del proyecto incorpora una serie de mejoras que lo diferencian notablemente de un detector convencional, orientándolo hacia un sistema inteligente de asistencia real.
+
 **1. Notificaciones Automáticas a través de WhatsApp**
+
 Cuando se detecta una caída, el dispositivo no solo activa el buzzer, sino que envía un mensaje de alerta mediante WhatsApp a un contacto de emergencia previamente configurado.
 Esta funcionalidad se implementa mediante la WhatsApp Cloud API, lo que permite:
 
@@ -91,14 +93,18 @@ Esta funcionalidad se implementa mediante la WhatsApp Cloud API, lo que permite:
 -Uso de la aplicación más extendida entre personas mayores y adultos
 
 Con esta mejora, el sistema deja de ser un simple detector y se convierte en un dispositivo de comunicación inteligente orientado a la asistencia remota.
+
 **2. Registro de Eventos en Memoria (Histórico de Caídas)**
+
 El dispositivo almacena cada caída detectada en la memoria interna (SPIFFS), registrando datos como:
 fecha y hora del incidente,
 número de eventos detectados,
 estado del usuario tras la caída.
 
 Esto permite al cuidador o técnico analizar el historial y evaluar la evolución del usuario, añadiendo una dimensión temporal y diagnóstica al sistema.
+
 **3. Sistema de Indicadores LED Inteligentes**
+
 El LED del dispositivo ya no actúa únicamente como un simple encendido/apagado: ahora representa estados del sistema mediante colores distintos:
 Estado del sistema	Color LED
 -En funcionamiento normal	Verde
@@ -107,7 +113,9 @@ Estado del sistema	Color LED
 -Alarma cancelada	Azul
 
 Este lenguaje visual facilita la interacción del usuario con el dispositivo y mejora la comprensión del estado operativo sin necesidad de pantalla.
+
 **4. Extensibilidad hacia Visión Artificial**
+
 El sistema ha sido diseñado para admitir módulos de visión artificial en versiones futuras. Esto permite:
 -Analizar la postura del usuario mediante cámaras externas
 -Confirmar visualmente si una caída ha ocurrido realmente
@@ -115,7 +123,9 @@ El sistema ha sido diseñado para admitir módulos de visión artificial en vers
 -Complementar los datos del acelerómetro con información contextual
 
 Esta mejora convierte el proyecto en una plataforma híbrida capaz de evolucionar hacia soluciones asistenciales más complejas, como las que se utilizan en sistemas de teleasistencia profesional.
+
  **Visión Futura del Sistema**
+ 
 La arquitectura actual no solo detecta caídas: está preparada para convertirse en un ecosistema de asistencia inteligente.
 La integración de algoritmos predictivos, comunicación avanzada y módulos perceptivos sitúan este dispositivo en la línea de los desarrollos tecnológicos que definen la Industria 5.0, donde el usuario y la tecnología conviven de manera coordinada.
 
