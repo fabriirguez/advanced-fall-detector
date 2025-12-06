@@ -1,73 +1,101 @@
-# ESP32 Fall Detection Device
+# Dispositivo de Detección de Caídas con ESP32
 
-<!--![ESP32 Fall Detection Device](fall_detection_device.jpg)-->
+Este proyecto consiste en un dispositivo portátil desarrollado con la placa **ESP32** cuya finalidad es identificar caídas de manera automática mediante la lectura de datos de un sensor inercial. El sistema analiza los cambios bruscos de aceleración (jerk) para determinar si se ha producido un evento compatible con una caída real. Cuando esto ocurre, se activa una alarma sonora para alertar a las personas cercanas. El usuario puede cancelar la alarma mediante un pulsador especialmente dedicado a esta función. Además, el dispositivo incorpora conectividad inalámbrica y capacidad para enviar mensajes de emergencia a contactos previamente almacenados.
 
-The ESP32 Fall Detection Device is a wearable device designed to detect falls using the MPU6050 accelerometer and gyroscope sensor. It utilizes the jerk in accelerations to determine if a fall event has occurred. In case of a fall, the device activates a buzzer to alert people in the vicinity. Additionally, it includes an event cancellation button that generates an interrupt to stop the buzzer. The device also features a built-in WiFi manager for easy connection to WiFi networks. In the event of a fall, it sends SOS SMS messages to the added emergency contacts to request help.
+---
 
+## Características Principales
 
-## Features
+- **Detección de caídas en tiempo real:**  
+  El sistema monitoriza constantemente el movimiento del usuario utilizando el sensor **MPU6050**. Cuando se detecta un cambio repentino en la aceleración que supera un umbral determinado, el firmware interpreta dicho evento como una posible caída.
 
-- **Fall Detection:** The device continuously monitors the user's movements using the MPU6050 sensor. A significant jerk in accelerations is detected to trigger a fall event.
+- **Alarma acústica integrada:**  
+  Ante una caída confirmada, el dispositivo activa un **zumbador (buzzer)** que emite un sonido continuo para pedir ayuda o llamar la atención de otras personas.
 
-- **Buzzer Alert:** Once a fall is detected, a built-in buzzer is activated to alert nearby individuals about the fall.
+- **Botón de cancelación con interrupción:**  
+  Un pulsador físico permite desactivar la alarma. Su manejo genera una interrupción que detiene el zumbador de forma inmediata, evitando falsas alarmas o permitiendo silenciar la alerta tras verificar la seguridad del usuario.
 
-- **Event Cancellation Button:** The device is equipped with an event cancellation button. Pressing this button generates an interrupt, stopping the buzzer and preventing false alarms.
+- **Gestor de WiFi incorporado:**  
+  El ESP32 integra un sistema de configuración inalámbrica que facilita la conexión a redes WiFi sin necesidad de modificar el código. Esta función permite habilitar futuras integraciones de comunicación remota.
 
-- **WiFi Manager:** The ESP32 Fall Detection Device has a built-in WiFi manager, allowing easy connection to WiFi networks.
+- **Envío de SMS de emergencia (SOS):**  
+  En caso de caída, el dispositivo puede enviar mensajes SMS a los contactos registrados utilizando servicios basados en la nube. De esta manera, un familiar o persona designada recibe un aviso inmediato solicitando asistencia.
 
-- **SOS SMS:** In the event of a fall, the device can send SOS SMS messages to pre-added emergency contacts to request help.
+---
 
+## 🧩 Componentes de Hardware Utilizados
 
-## Hardware Components Used:
 <p align="center">
-<img src="https://i.ibb.co/1vSSR8p/Whats-App-Image-2023-07-25-at-12-28-09-PM.jpg" height="500" width="500">
+<img src="(tu_imagen_aqui).jpg" height="500" width="500">
 </p>
 <br>
 
-- **ESP32 Development Board:** The ESP32 development board serves as the main microcontroller for the fall detection device. It provides processing power, built-in WiFi and Bluetooth capabilities, and multiple GPIO pins for interfacing with other components.
+- **ESP32 DevKit:**  
+  Microcontrolador principal que ejecuta el firmware, gestiona la comunicación WiFi y controla los periféricos conectados.
 
-- **MPU6050 Accelerometer and Gyroscope Sensor:** The MPU6050 sensor is a crucial component for detecting falls. It combines an accelerometer and a gyroscope to measure the device's motion, allowing the detection of sudden changes in acceleration that could indicate a fall event.
+- **Sensor MPU6050 (Acelerómetro + Giroscopio):**  
+  Proporciona lecturas de aceleración y velocidad angular. El análisis del jerk (variación repentina de la aceleración) permite identificar patrones asociados a caídas.
 
-- **Piezo Buzzer:** An Piezo buzzer is used to generate an audible alert in case of a fall detection. It produces a continuous sound to attract the attention of people nearby.
+- **Zumbador Piezoeléctrico:**  
+  Genera una señal sonora para advertir de la caída.
 
-- **Event Cancellation Button:** The event cancellation button is a momentary push-button that allows the user to manually stop the buzzer in the event of a false alarm or after a fall detection.
+- **Pulsador de Cancelación:**  
+  Botón destinado a detener la alarma mediante una interrupción externa.
 
-- **ESP32 WiFi Connectivity:** The ESP32 Fall Detection Device is equipped with built-in WiFi capabilities. It uses this WiFi connectivity to communicate with the Twilio cloud services and send SMS alerts. With the Twilio integration, the fall detection device can benefit from a robust cloud communication platform to ensure reliable and efficient SMS delivery to the emergency contacts in case of a fall.
+- **Conectividad WiFi integrada:**  
+  Utilizada para enviar datos remotos, acceder a servicios cloud y transmitir mensajes SMS a contactos de emergencia.
 
-- **Internal Flash Memory (SPIFFS):** The ESP32 has 4MB of onboard memory which is used to store emergency contact information, wifi credentials and other settings required by the device.
+- **Memoria flash interna (SPIFFS):**  
+  Permite almacenar información como credenciales WiFi, lista de contactos y configuraciones específicas del sistema.
 
-The hardware components work together to enable the ESP32 Fall Detection Device to effectively detect falls, generate alerts, and send SOS messages to emergency contacts, ensuring the safety of the device user. Proper assembly, calibration, and testing are essential to achieve accurate fall detection and reliable performance.
+Todos los componentes trabajan conjuntamente para proporcionar un sistema completo, fiable y fácilmente ampliable.
 
+---
 
-## How it Works
+## ⚙️ Funcionamiento del Sistema
+
 <p align="center">
-<img src="https://i.ibb.co/q1C2q6c/Whats-App-Image-2023-07-25-at-1-08-28-PM.jpg" height="700" width="450">
+<img src="(tu_otra_imagen_aqui).jpg" height="700" width="450">
 </p>
 <br>
 
-1. **Fall Detection:** The MPU6050 sensor measures the user's accelerations and jerk in real-time. If the jerk exceeds a certain threshold, it indicates a fall event.
+1. **Lectura del Movimiento:**  
+   El sensor MPU6050 proporciona valores de aceleración y rotación del usuario en tiempo real.
 
-2. **Buzzer Activation:** Upon fall detection, the built-in buzzer is triggered to alert people nearby.
+2. **Detección de Caída:**  
+   El firmware evalúa la variación de aceleración (jerk). Cuando esta supera un umbral establecido, se interpreta como una posible caída.
 
-3. **SOS SMS:** When a fall is detected, the device retrieves the emergency contact information stored in the external flash memory and sends SOS SMS messages to the pre-added emergency contacts.
+3. **Activación del Buzzer:**  
+   Si el evento cumple las condiciones de detección, el dispositivo activa el zumbador.
 
-4. **Event Cancellation:** The user can press the event cancellation button to stop the buzzer in case of a false alarm.
+4. **Envío de Mensaje SOS:**  
+   El sistema obtiene las credenciales almacenadas en la memoria y envía un mensaje de auxilio a los contactos registrados.
 
-5. **WiFi Connection:** The device enters WiFi configuration mode, enabling the user to connect it to a WiFi network using a smartphone or computer.
+5. **Cancelación Manual:**  
+   El usuario puede pulsar el botón dedicado para detener la alarma y silenciar el zumbador.
 
+6. **Conexión WiFi:**  
+   Para la configuración inicial, el dispositivo habilita un modo de gestión WiFi que permite establecer la red desde un móvil o PC sin reprogramar la placa.
 
-## Getting Started
+---
 
-To use the ESP32 Fall Detection Device, follow these steps:
+## 🚀 Cómo Empezar
 
-1. Assemble the hardware components according to the schematic diagram provided.
+1. Ensamblar el hardware siguiendo la disposición recomendada.
+2. Cargar el firmware en la placa ESP32 mediante Arduino IDE o PlatformIO.
+3. Configurar la red WiFi utilizando el gestor integrado.
+4. Registrar los contactos de emergencia.
+5. Colocar el dispositivo sobre el usuario.
+6. El sistema comenzará a monitorizar los movimientos automáticamente.
 
-2. Upload the provided firmware to the ESP32 using the Arduino IDE or your preferred programming environment.
+En caso de caída, el zumbador se activará y los contactos recibirán un mensaje solicitando ayuda.
 
-3. Connect to the device's WiFi manager to configure the WiFi settings for the first time.
+---
 
-4. Add emergency contacts and other required settings through the WiFi manager.
+## 👤 Autor
 
-5. Wear the device, and it will continuously monitor your movements.
+**Fabricio Andree Rodríguez  
+Ingeniería en Robótica e Inteligencia Artificial**
 
-6. In the event of a fall, the buzzer will sound, and SOS SMS messages will be sent to the emergency contacts.
+---
+
