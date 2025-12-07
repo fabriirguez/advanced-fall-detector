@@ -35,13 +35,13 @@
 
 #include <Wire.h>
 #include <MPU6050.h>
-#define BUZZER_PIN 14
+#define BUZZER_PIN D6
 #define BUZZER_CHANNEL 0
 #define BEEP_DURATION 5000 // 5 segundos (en milisegundos)
 #include <HTTPClient.h>
 #include "time.h"
 
-const int PIN_LED = 2;
+const int PIN_LED = LED_BUILTIN;
 
 #define JSON_CONFIG_FILE "/sample_config.json"
 
@@ -93,7 +93,7 @@ struct Button {
     bool pressed;
 };
 
-Button button1 = {12, 0, false};
+Button button1 = {D1, 0, false};
 
 MPU6050 mpu;
 
@@ -239,7 +239,7 @@ void configModeCallback(WiFiManager *myWiFiManager)
 void setup()
 {
 
-  Wire.begin(2, 15); // SDA a GPIO 22, SCL a GPIO 21
+  Wire.begin(); // Usar SDA y SCL por defecto de la XIAO ESP32-C3
 
   // Inicializar MPU6050
   mpu.initialize();
