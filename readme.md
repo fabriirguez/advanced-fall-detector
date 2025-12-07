@@ -1,6 +1,6 @@
-# Dispositivo de Detección de Caídas con ESP32 (VERSIÓN BÁSICA)
+# Dispositivo de Detección de Caídas con Seeed Studio XIAO ESP32-C3 (VERSIÓN BÁSICA)
 
-Este proyecto consiste en un dispositivo portátil desarrollado con la placa **ESP32** cuya finalidad es identificar caídas de manera automática mediante la lectura de datos de un sensor inercial. El sistema analiza los cambios bruscos de aceleración (jerk) para determinar si se ha producido un evento compatible con una caída real. Cuando esto ocurre, se activa una alarma sonora para alertar a las personas cercanas. El usuario puede cancelar la alarma mediante un pulsador especialmente dedicado a esta función. Además, el dispositivo incorpora conectividad inalámbrica y capacidad para enviar mensajes de emergencia a contactos previamente almacenados.
+Este proyecto consiste en un dispositivo portátil desarrollado con la placa **Seeed Studio XIAO ESP32-C3** cuya finalidad es identificar caídas de manera automática mediante la lectura de datos de un sensor inercial. El sistema analiza los cambios bruscos de aceleración (jerk) para determinar si se ha producido un evento compatible con una caída real. Cuando esto ocurre, se activa una alarma sonora para alertar a las personas cercanas. El usuario puede cancelar la alarma mediante un pulsador especialmente dedicado a esta función. Además, el dispositivo incorpora conectividad inalámbrica y capacidad para enviar mensajes de emergencia a contactos previamente almacenados.
 
 ---
 
@@ -30,7 +30,7 @@ Este proyecto consiste en un dispositivo portátil desarrollado con la placa **E
 </p>
 <br>
 
-- **ESP32 DevKit:**  
+- **Seeed Studio XIAO ESP32-C3:**  
   Microcontrolador principal que ejecuta el firmware, gestiona la comunicación WiFi y controla los periféricos conectados.
 
 - **Sensor MPU6050 (Acelerómetro + Giroscopio):**  
@@ -49,7 +49,7 @@ Este proyecto consiste en un dispositivo portátil desarrollado con la placa **E
   Permite almacenar información como credenciales WiFi, lista de contactos y configuraciones específicas del sistema.
 
 - **Interfaz de Usuario: Encendido/Apagado**
-  El sistema incluye un interruptor físico ON/OFF que controla el suministro eléctrico del ESP32, permitiendo al usuario activar o desactivar el dispositivo sin necesidad de desconectar cables.
+  El sistema incluye un interruptor físico ON/OFF que controla el suministro eléctrico de la XIAO ESP32-C3, permitiendo al usuario activar o desactivar el dispositivo sin necesidad de desconectar cables.
 
 - **Sistema de Alimentación**
 El dispositivo se alimenta mediante una batería recargable Li-Ion, acompañada de un módulo de carga TP4056. Esto permite movilidad total del sistema, cumpliendo con el requisito de autonomía energética.
@@ -143,7 +143,7 @@ La integración de algoritmos predictivos, comunicación avanzada y módulos per
 ##  Cómo Empezar
 
 1. Ensamblar el hardware siguiendo la disposición recomendada.
-2. Cargar el firmware en la placa ESP32 mediante Arduino IDE o PlatformIO.
+2. Cargar el firmware en la placa Seeed Studio XIAO ESP32-C3 mediante Arduino IDE o PlatformIO.
 3. Configurar la red WiFi utilizando el gestor integrado.
 4. Registrar los contactos de emergencia.
 5. Colocar el dispositivo sobre el usuario.
@@ -159,4 +159,3 @@ En caso de caída, el zumbador se activará y los contactos recibirán un mensaj
 Ingeniería en Robótica e Inteligencia Artificial**
 
 ---
-
