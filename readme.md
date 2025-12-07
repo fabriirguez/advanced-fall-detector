@@ -48,6 +48,12 @@ Este proyecto consiste en un dispositivo portátil desarrollado con la placa **E
 - **Memoria flash interna (SPIFFS):**  
   Permite almacenar información como credenciales WiFi, lista de contactos y configuraciones específicas del sistema.
 
+- **Interfaz de Usuario: Encendido/Apagado**
+  El sistema incluye un interruptor físico ON/OFF que controla el suministro eléctrico del ESP32, permitiendo al usuario activar o desactivar el dispositivo sin necesidad de desconectar cables.
+
+- **Sistema de Alimentación**
+El dispositivo se alimenta mediante una batería recargable Li-Ion, acompañada de un módulo de carga TP4056. Esto permite movilidad total del sistema, cumpliendo con el requisito de autonomía energética.
+
 Todos los componentes trabajan conjuntamente para proporcionar un sistema completo, fiable y fácilmente ampliable.
 
 ---
